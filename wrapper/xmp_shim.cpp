@@ -4,8 +4,8 @@
 
 extern "C" {
 
-void xmp_init(void* ptr) {
-    static_cast<SXMPMeta*>(ptr)->Initialize();
+int xmp_init(void* ptr) {
+    return static_cast<SXMPMeta*>(ptr)->Initialize();
 }
 
 void xmp_terminate(void* ptr) {
@@ -22,6 +22,14 @@ void xmp_free(void* ptr) {
 
 void xmp_get_version_info(void* ptr, void* info) {
   static_cast<SXMPMeta*>(ptr)->GetVersionInfo(static_cast<XMP_VersionInfo*>(info));
+}
+
+unsigned int xmp_get_global_options(void* ptr) {
+  return static_cast<SXMPMeta*>(ptr)->GetGlobalOptions();
+}
+
+void xmp_set_global_options(void* ptr, unsigned int options) {
+  static_cast<SXMPMeta*>(ptr)->SetGlobalOptions(options);
 }
 
 const char* xmp_get_property(

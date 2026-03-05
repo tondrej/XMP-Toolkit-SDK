@@ -1,4 +1,4 @@
-use std::ffi::{c_void, CStr, CString};
+use std::ffi::{c_uint, c_void, CStr, CString};
 use std::os::raw::c_char;
 use std::ptr::null;
 
@@ -93,13 +93,14 @@ pub extern "C" fn rxmp_free(handle: *mut rxmp_handle) {
 }
 
 #[no_mangle]
-pub extern "C" fn rxmp_init(handle: *mut rxmp_handle) {
-    let _ = ffi_guard(|| {
+pub extern "C" fn rxmp_init(handle: *mut rxmp_handle) -> bool {
+    ffi_guard(|| {
         if handle.is_null() {
-            return;
+            return 0;
         }
         unsafe { xmp_init(handle as *mut c_void) }
-    });
+    })
+        .unwrap_or(0) != 0
 }
 
 #[no_mangle]
@@ -119,6 +120,27 @@ pub extern "C" fn rxmp_get_version_info(handle: *mut rxmp_handle, info: *mut rxm
             return;
         }
         unsafe { xmp_get_version_info(handle as *mut c_void, info as *mut c_void) }
+    });
+}
+
+#[no_mangle]
+pub extern "C" fn rxmp_get_global_options(handle: *mut rxmp_handle) -> c_uint {
+    ffi_guard(|| {
+        if handle.is_null() {
+            return 0;
+        }
+        unsafe { xmp_get_global_options(handle as *mut c_void) }
+    })
+        .unwrap_or(0) as c_uint
+}
+
+#[no_mangle]
+pub extern "C" fn rxmp_set_global_options(handle: *mut rxmp_handle, options: c_uint) {
+    let _ = ffi_guard(|| {
+        if handle.is_null() {
+            return;
+        }
+        unsafe { xmp_set_global_options(handle as *mut c_void, options) }
     });
 }
 

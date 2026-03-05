@@ -1,12 +1,12 @@
-use libxmp::{rxmp_free, rxmp_get_version_info, rxmp_init, rxmp_new, rxmp_version_info};
+use libxmp::{rxmp_free, rxmp_get_global_options, rxmp_get_version_info, rxmp_init, rxmp_new, rxmp_version_info};
 
 fn main() {
-    let xmp = rxmp_new();
-    rxmp_init(xmp);
-    println!("rxmp_init()");
+    let handle = rxmp_new();
+    let init_result = rxmp_init(handle);
+    println!("rxmp_init(): {}", init_result);
 
     let mut version_info = rxmp_version_info::default();
-    rxmp_get_version_info(xmp, &mut version_info as *mut rxmp_version_info);
+    rxmp_get_version_info(handle, &mut version_info as *mut rxmp_version_info);
 
     println!(
         "XMP version: {}.{}.{}.{}: {}, flags: {}",
@@ -18,6 +18,9 @@ fn main() {
         version_info.flags
     );
 
-    rxmp_free(xmp);
+    let global_options = rxmp_get_global_options(handle);
+    println!("global_options: {}", global_options);
+
+    rxmp_free(handle);
     println!("rxmp_free()");
 }

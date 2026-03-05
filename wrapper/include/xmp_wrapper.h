@@ -42,11 +42,15 @@ struct rxmp_handle *rxmp_new(void);
 
 void rxmp_free(struct rxmp_handle *handle);
 
-void rxmp_init(struct rxmp_handle *handle);
+bool rxmp_init(struct rxmp_handle *handle);
 
 void rxmp_terminate(struct rxmp_handle *handle);
 
 void rxmp_get_version_info(struct rxmp_handle *handle, struct rxmp_version_info *info);
+
+unsigned int rxmp_get_global_options(struct rxmp_handle *handle);
+
+void rxmp_set_global_options(struct rxmp_handle *handle, unsigned int options);
 
 char *rxmp_get_property(struct rxmp_handle *handle, const char *schema, const char *name);
 
