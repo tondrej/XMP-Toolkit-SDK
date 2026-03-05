@@ -4,12 +4,12 @@
 
 extern "C" {
 
-void xmp_init() {
-    SXMPMeta::Initialize();
+void xmp_init(void* ptr) {
+    static_cast<SXMPMeta*>(ptr)->Initialize();
 }
 
-void xmp_terminate() {
-    SXMPMeta::Terminate();
+void xmp_terminate(void* ptr) {
+    static_cast<SXMPMeta*>(ptr)->Terminate();
 }
 
 void* xmp_new() {

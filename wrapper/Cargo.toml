@@ -1,5 +1,5 @@
 [package]
-name = "xmp_wrapper"
+name = "libxmp"
 version = "0.1.0"
 edition = "2021"
 
