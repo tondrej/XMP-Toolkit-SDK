@@ -1,0 +1,15 @@
+language = "C"
+pragma_once = true
+
+include_version = true
+documentation = true
+
+[export]
+include = [
+    "rxmp_init",
+    "rxmp_terminate",
+    "rxmp_new",
+    "rxmp_free",
+    "rxmp_get_property",
+    "rxmp_string_free",
+]
