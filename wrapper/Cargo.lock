@@ -329,6 +329,7 @@ dependencies = [
  "bindgen",
  "cbindgen",
  "cc",
+ "libloading",
 ]
 
 [[package]]

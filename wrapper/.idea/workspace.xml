@@ -12,18 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f46ed8c-d978-40c6-9822-8f95e7366b7f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/examples/simple.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/dylib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cbindgen.toml" beforeDir="false" afterPath="$PROJECT_DIR$/cbindgen.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/xmp_wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/xmp_wrapper.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll.exp" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.dll.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll.lib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.dll.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/wrapper.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xmp_shim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/xmp_shim.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +47,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Cargo.Build libxmp.executor": "Run",
+    "Cargo.Run dylib.executor": "Run",
     "Cargo.Run simple.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
@@ -83,10 +76,29 @@
       <recent name="C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run simple">
+  <component name="RunManager" selected="Cargo.Run dylib">
     <configuration name="Build libxmp" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build --package libxmp --lib" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs>
+        <env name="LIBCLANG_PATH" value="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\Llvm\x64\bin" />
+      </envs>
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run dylib" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="command" value="run --example dylib" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs>
         <env name="LIBCLANG_PATH" value="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\Llvm\x64\bin" />
@@ -143,6 +155,7 @@
     <list>
       <item itemvalue="Cargo.Test libxmp" />
       <item itemvalue="Cargo.Run simple" />
+      <item itemvalue="Cargo.Run dylib" />
       <item itemvalue="Cargo.Build libxmp" />
     </list>
     <recent_temporary>
@@ -165,7 +178,7 @@
       <workItem from="1772666491498" duration="2344000" />
       <workItem from="1772722839928" duration="8171000" />
       <workItem from="1772734429604" duration="507000" />
-      <workItem from="1772738281266" duration="7490000" />
+      <workItem from="1772738281266" duration="8445000" />
     </task>
     <servers />
   </component>
