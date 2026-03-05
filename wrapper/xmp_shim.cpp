@@ -20,6 +20,10 @@ void xmp_free(void* ptr) {
     delete static_cast<SXMPMeta*>(ptr);
 }
 
+void xmp_get_version_info(void* ptr, void* info) {
+  static_cast<SXMPMeta*>(ptr)->GetVersionInfo(static_cast<XMP_VersionInfo*>(info));
+}
+
 const char* xmp_get_property(
     void* ptr,
     const char* schema,

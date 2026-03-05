@@ -10,6 +10,7 @@ include = [
     "rxmp_terminate",
     "rxmp_new",
     "rxmp_free",
+    "rxmp_get_version_info",
     "rxmp_get_property",
     "rxmp_string_free",
 ]
