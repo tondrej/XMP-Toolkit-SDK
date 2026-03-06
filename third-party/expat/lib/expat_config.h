@@ -1,2 +1,3 @@
 #define XML_GE 1
 #define XML_CONTEXT_BYTES 1024
+#define HAVE_GETRANDOM 1

@@ -105,6 +105,7 @@ if (UNIX)
 
     else()
 		if(NOT CMAKE_CROSSCOMPILING)
+			set(XMP_ENABLE_SECURE_SETTINGS "OFF")
 			if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86_64")
 				# running on 64bit machine
 				set(XMP_EXTRA_BUILDMACHINE	"Buildmachine is 64bit")
@@ -120,8 +121,8 @@ if (UNIX)
 					set(XMP_PLATFORM_FOLDER "i80386linux_x64_centos") # add XMP_BUILDMODE_DIR to follow what other platforms do
 					set(XMP_GCC_LIBPATH /opt/llvm/lib)
 				else()
-				set(XMP_PLATFORM_FOLDER "i80386linux_x64") # add XMP_BUILDMODE_DIR to follow what other platforms do
-				set(XMP_GCC_LIBPATH /user/unicore/i80386linux_x64/compiler/gcc4.8.2/linux3.10_64/lib64)
+				set(XMP_PLATFORM_FOLDER "x86_64-linux-gnu") # add XMP_BUILDMODE_DIR to follow what other platforms do
+				set(XMP_GCC_LIBPATH /usr/lib/x86_64-linux-gnu/)
 				endif()	
 			else()
 				set(XMP_EXTRA_LINK_FLAGS "-m32 -mtune=i686")
@@ -170,7 +171,8 @@ if (UNIX)
 		#set(CMAKE_CXX_COMPILER "/user/unicore/i80386linux/compiler/gcc4.4.4/linux2.6_32/bin/gcc")
 		#set(XMP_GCC_LIBPATH /user/unicore/i80386linux/compiler/gcc4.4.4/linux2.6_32/lib)
 
-   		set(XMP_PLATFORM_LINK "-z defs -Xlinker -Bsymbolic -Wl,--no-undefined  ${XMP_EXTRA_LINK_FLAGS} ${XMP_TOOLCHAIN_LINK_FLAGS} -lrt -Wl,--no-as-needed -ldl -lpthread ${XMP_GCC_LIBPATH}/libssp.a")
+		set(XMP_PLATFORM_LINK "-z defs -Xlinker -Bsymbolic -Wl,--no-undefined  ${XMP_EXTRA_LINK_FLAGS} ${XMP_TOOLCHAIN_LINK_FLAGS} -lrt -Wl,--no-as-needed -ldl -lpthread")
+		#set(XMP_PLATFORM_LINK "-z defs -Xlinker -Bsymbolic -Wl,--no-undefined  ${XMP_EXTRA_LINK_FLAGS} ${XMP_TOOLCHAIN_LINK_FLAGS} -lrt -Wl,--no-as-needed -ldl -lpthread ${XMP_GCC_LIBPATH}/libssp.a")
 if(CENTOS)
 		set(XMP_PLATFORM_LINK " -lc++abi ${XMP_PLATFORM_LINK}")
 endif()
