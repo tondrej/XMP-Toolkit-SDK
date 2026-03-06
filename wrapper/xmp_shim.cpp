@@ -32,6 +32,12 @@ void xmp_set_global_options(void* ptr, unsigned int options) {
   static_cast<SXMPMeta*>(ptr)->SetGlobalOptions(options);
 }
 
+typedef unsigned int (* xmp_text_output_proc) (void* client_data, const char* buffer, unsigned int buffer_size);
+
+unsigned int xmp_dump_namespaces(void* ptr, xmp_text_output_proc out_proc, void* client_data) {
+  return static_cast<SXMPMeta*>(ptr)->DumpNamespaces(reinterpret_cast<XMP_TextOutputProc>(out_proc), client_data);
+}
+
 const char* xmp_get_property(
     void* ptr,
     const char* schema,

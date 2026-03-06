@@ -15,8 +15,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/dylib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/dylib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/simple.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/simple.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/xmp_wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/xmp_wrapper.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/debug/liblibxmp.d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/debug/liblibxmp.rlib" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/debug/libxmp.d" beforeDir="false" />
@@ -54,40 +52,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Cargo.Build libxmp.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Run dylib.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Run simple.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender may affect IDE&quot;,
-    &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/code/ondrejkelle/XMP-Toolkit-SDK/wrapper&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
-    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;language.rust.cargo.check&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Cargo.Build libxmp.executor": "Run",
+    "Cargo.Run dylib.executor": "Run",
+    "Cargo.Run simple.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
+    "Notification.DoNotAsk-WindowsDefender": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/code/ondrejkelle/XMP-Toolkit-SDK/wrapper",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.first.attach.projects": "true",
+    "settings.editor.selected.configurable": "language.rust.cargo.check",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\examples" />
     </key>
   </component>
   <component name="RunManager" selected="Cargo.Run dylib">
-    <configuration name="Build libxmp" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+    <configuration name="Build libxmp" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build --package libxmp --lib" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -124,6 +122,7 @@
       <option name="redirectInputPath" value="" />
       <method v="2">
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build libxmp" run_configuration_type="CargoCommandRunConfiguration" run_configuration_target="RsBuildProfile:dev" />
       </method>
     </configuration>
     <configuration name="Run simple" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
@@ -143,6 +142,7 @@
       <option name="redirectInputPath" value="" />
       <method v="2">
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build libxmp" run_configuration_type="CargoCommandRunConfiguration" run_configuration_target="RsBuildProfile:dev" />
       </method>
     </configuration>
     <configuration name="Test libxmp" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
@@ -163,16 +163,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Cargo.Run dylib" />
+      <item itemvalue="Cargo.Build libxmp" />
       <item itemvalue="Cargo.Test libxmp" />
       <item itemvalue="Cargo.Run simple" />
-      <item itemvalue="Cargo.Build libxmp" />
+      <item itemvalue="Cargo.Run dylib" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Cargo.Build libxmp" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
@@ -189,11 +184,22 @@
       <workItem from="1772722839928" duration="8171000" />
       <workItem from="1772734429604" duration="507000" />
       <workItem from="1772738281266" duration="8445000" />
-      <workItem from="1772750781476" duration="3085000" />
+      <workItem from="1772750781476" duration="5862000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/examples/simple.rs</url>
+          <line>3</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

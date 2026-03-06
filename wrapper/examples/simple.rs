@@ -1,4 +1,4 @@
-use libxmp::{rxmp_free, rxmp_get_global_options, rxmp_get_version_info, rxmp_init, rxmp_new, rxmp_version_info};
+use libxmp::{rxmp_free, rxmp_get_global_options, rxmp_get_version_info, rxmp_init, rxmp_new, rxmp_set_global_options, rxmp_version_info};
 
 fn main() {
     let handle = rxmp_new();
@@ -20,6 +20,8 @@ fn main() {
 
     let global_options = rxmp_get_global_options(handle);
     println!("global_options: {}", global_options);
+
+    // rxmp_set_global_options(handle, global_options);
 
     rxmp_free(handle);
     println!("rxmp_free()");

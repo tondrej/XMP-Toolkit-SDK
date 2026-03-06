@@ -40,6 +40,8 @@ fn main() {
         let global_options = rxmp_get_global_options(handle);
         println!("global_options: {}", global_options);
 
+        // rxmp_set_global_options(handle, global_options);
+
         rxmp_free(handle);
         println!("rxmp_free()");
     }
