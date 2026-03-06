@@ -9,6 +9,7 @@ include = [
     "rxmp_init",
     "rxmp_terminate",
     "rxmp_new",
+    "rxmp_new_from_buffer",
     "rxmp_free",
     "rxmp_get_version_info",
     "rxmp_get_property",

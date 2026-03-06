@@ -40,6 +40,8 @@ typedef struct rxmp_version_info {
 
 struct rxmp_handle *rxmp_new(void);
 
+struct rxmp_handle *rxmp_new_from_buffer(const char *buffer);
+
 void rxmp_free(struct rxmp_handle *handle);
 
 bool rxmp_init(struct rxmp_handle *handle);
@@ -51,6 +53,10 @@ void rxmp_get_version_info(struct rxmp_handle *handle, struct rxmp_version_info 
 unsigned int rxmp_get_global_options(struct rxmp_handle *handle);
 
 void rxmp_set_global_options(struct rxmp_handle *handle, unsigned int options);
+
+unsigned int rxmp_dump_namespaces(struct rxmp_handle *handle,
+                                  xmp_text_output_proc out_proc,
+                                  void *client_data);
 
 char *rxmp_get_property(struct rxmp_handle *handle, const char *schema, const char *name);
 

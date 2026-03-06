@@ -10,6 +10,7 @@ fn main() {
     // Build C++ shim
     cc::Build::new()
         .cpp(true)
+        .std("c++17")
         .file("xmp_shim.cpp")
         .include("../public/include")
         .define("WIN32", None)

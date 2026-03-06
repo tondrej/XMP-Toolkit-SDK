@@ -1,1 +1,1 @@
-C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\target\debug\liblibxmp.rlib: C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\build.rs C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\src\lib.rs C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\target\debug\build\libxmp-0c695244290a061b\out\bindings.rs
+C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\target\debug\liblibxmp.rlib: C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\build.rs C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\src\lib.rs C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\target\debug\build\libxmp-e7115f6dea778ff3\out\bindings.rs

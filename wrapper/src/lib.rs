@@ -41,58 +41,44 @@ impl rxmp_version_info {
     }
 
     pub fn get_message(&self) -> String {
-        unsafe {
-            CStr::from_ptr(self.message).to_string_lossy().into_owned()
-        }
+        unsafe { CStr::from_ptr(self.message).to_str().unwrap_or("").to_owned() }
     }
-}
-
-pub(crate) struct RxmpHandle {
-    inner: std::ptr::NonNull<c_void>,
-}
-
-fn handle_from_ptr(ptr: *mut rxmp_handle) -> Option<&'static mut RxmpHandle> {
-    if ptr.is_null() {
-        return None;
-    }
-
-    unsafe { Some(&mut *(ptr as *mut RxmpHandle)) }
-}
-
-fn handle_into_ptr(h: Box<RxmpHandle>) -> *mut rxmp_handle {
-    Box::into_raw(h) as *mut rxmp_handle
 }
 
 fn ffi_guard<T>(f: impl FnOnce() -> T) -> Option<T> {
     std::panic::catch_unwind(std::panic::AssertUnwindSafe(f)).ok()
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_new() -> *mut rxmp_handle {
     ffi_guard(|| unsafe {
-        let ptr = xmp_new();
-        let inner = std::ptr::NonNull::new(ptr)?;
-        let handle = RxmpHandle { inner };
-        Some(handle_into_ptr(Box::new(handle)))
+        return xmp_new() as *mut rxmp_handle;
     })
-    .flatten()
     .unwrap_or(std::ptr::null_mut())
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
+pub extern "C" fn rxmp_new_from_buffer(buffer: *const c_char) -> *mut rxmp_handle {
+    ffi_guard(|| unsafe {
+        let c_str = CStr::from_ptr(buffer);
+        return xmp_new_from_buffer(c_str.as_ptr(), c_str.to_bytes().len() as u32) as *mut rxmp_handle;
+    })
+    .unwrap_or(std::ptr::null_mut())
+}
+
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_free(handle: *mut rxmp_handle) {
     let _ = ffi_guard(|| {
         if handle.is_null() {
             return;
         }
         unsafe {
-            let boxed = Box::from_raw(handle as *mut RxmpHandle);
-            xmp_free(boxed.inner.as_ptr());
+            xmp_free(handle as *mut c_void);
         }
     });
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_init(handle: *mut rxmp_handle) -> bool {
     ffi_guard(|| {
         if handle.is_null() {
@@ -100,10 +86,11 @@ pub extern "C" fn rxmp_init(handle: *mut rxmp_handle) -> bool {
         }
         unsafe { xmp_init(handle as *mut c_void) }
     })
-        .unwrap_or(0) != 0
+    .unwrap_or(0)
+        != 0
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_terminate(handle: *mut rxmp_handle) {
     let _ = ffi_guard(|| {
         if handle.is_null() {
@@ -113,7 +100,7 @@ pub extern "C" fn rxmp_terminate(handle: *mut rxmp_handle) {
     });
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_get_version_info(handle: *mut rxmp_handle, info: *mut rxmp_version_info) {
     let _ = ffi_guard(|| {
         if handle.is_null() {
@@ -123,7 +110,7 @@ pub extern "C" fn rxmp_get_version_info(handle: *mut rxmp_handle, info: *mut rxm
     });
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_get_global_options(handle: *mut rxmp_handle) -> c_uint {
     ffi_guard(|| {
         if handle.is_null() {
@@ -131,10 +118,10 @@ pub extern "C" fn rxmp_get_global_options(handle: *mut rxmp_handle) -> c_uint {
         }
         unsafe { xmp_get_global_options(handle as *mut c_void) }
     })
-        .unwrap_or(0) as c_uint
+    .unwrap_or(0) as c_uint
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_set_global_options(handle: *mut rxmp_handle, options: c_uint) {
     let _ = ffi_guard(|| {
         if handle.is_null() {
@@ -144,7 +131,19 @@ pub extern "C" fn rxmp_set_global_options(handle: *mut rxmp_handle, options: c_u
     });
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
+pub extern "C" fn rxmp_dump_namespaces(handle: *mut rxmp_handle, out_proc: xmp_text_output_proc,
+  client_data: *mut c_void ) -> c_uint {
+    ffi_guard(|| {
+        if handle.is_null() {
+            return 0;
+        }
+        unsafe { xmp_dump_namespaces(handle as *mut c_void, out_proc, client_data) }
+    })
+    .unwrap_or(c_uint::MAX)
+}
+
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_get_property(
     handle: *mut rxmp_handle,
     schema: *const c_char,
@@ -173,7 +172,7 @@ pub extern "C" fn rxmp_get_property(
     .unwrap_or(std::ptr::null_mut())
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_string_free(str: *mut c_char) {
     let _ = ffi_guard(|| {
         if str.is_null() {
