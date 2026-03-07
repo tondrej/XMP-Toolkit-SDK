@@ -24,7 +24,7 @@ unsafe extern "C" fn text_output_proc(client_data: *mut c_void, buffer: *const c
 
 fn main() {
     unsafe {
-        let lib = Library::new("libxmp.dll").unwrap();
+        let lib = Library::new("liblibxmp.so").unwrap();
 
         let rxmp_new: Symbol<RxmpNew> = lib.get(b"rxmp_new").unwrap();
         let rxmp_init: Symbol<RxmpInit> = lib.get(b"rxmp_init").unwrap();
