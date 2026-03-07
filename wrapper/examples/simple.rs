@@ -31,6 +31,14 @@ unsafe extern "C" fn text_output_proc(_client_data: *mut c_void, buffer: *const 
     }
 }
 
+fn show_property(handle: *mut rxmp_handle, schema: &str, name: &str) {
+    let c_schema = CString::new(schema).unwrap();
+    let c_name = CString::new(name).unwrap();
+    let value_size = rxmp_get_property(handle, c_schema.as_ptr(), c_name.as_ptr(), null_mut(), 0, null_mut()) as usize;
+    let c_value = CString::new(vec![32u8; value_size]).unwrap();
+    rxmp_get_property(handle, c_schema.as_ptr(), c_name.as_ptr(), c_value.as_ref().as_ptr(), value_size as u32, null_mut());
+    println!("rxmp_get_property(\"{}\", \"{}\"): \"{}\"", schema, name, c_value.to_str().unwrap());
+}
 
 fn main() {
     let handle = rxmp_new();
@@ -62,12 +70,8 @@ fn main() {
     let parse_result = rxmp_parse_from_buffer(handle, c_str.as_ptr(), c_str.as_bytes().len() as u32, 0);
     println!("rxmp_parse_from_buffer(): {}", parse_result);
 
-    let schema = CString::new("http://ns.adobe.com/pdf/1.3/").unwrap();
-    let name = CString::new("Producer").unwrap();
-    let size = rxmp_get_property(handle, schema.as_ptr(), name.as_ptr(), null_mut(), 0, null_mut()) as usize;
-    let value = CString::new(vec![32u8; size]).unwrap();
-    rxmp_get_property(handle, schema.as_ptr(), name.as_ptr(), value.as_ref().as_ptr(), size as u32, null_mut());
-    println!("rxmp_get_property(): \"{}\"", value.to_str().unwrap());
+    show_property(handle, "http://ns.adobe.com/xap/1.0/", "CreatorTool");
+    show_property(handle, "http://ns.adobe.com/pdf/1.3/", "Producer");
 
     rxmp_free(handle);
     println!("rxmp_free()");
