@@ -1,4 +1,5 @@
 #include <string>
+#include <cstring>
 #define TXMP_STRING_TYPE std::string
 #include "XMP.incl_cpp"
 
@@ -40,20 +41,23 @@ unsigned int xmp_dump_namespaces(void* ptr, XMP_TextOutputProc out_proc, void* c
   return static_cast<SXMPMeta*>(ptr)->DumpNamespaces(out_proc, client_data);
 }
 
-const char* xmp_get_property(
-    void* ptr,
-    const char* schema,
-    const char* name
-) {
-    static std::string value;
-    SXMPMeta* meta = static_cast<SXMPMeta*>(ptr);
+int xmp_parse_from_buffer(void* ptr, const char* buffer, unsigned int buffer_size, unsigned int options) {
+  static_cast<SXMPMeta*>(ptr)->ParseFromBuffer(buffer, buffer_size, options);
+  return 1;
+}
 
-    std::string tmp;
-    if (meta->GetProperty(schema, name, &tmp, 0)) {
-        value = tmp;
-        return value.c_str();
+unsigned int xmp_get_property(void* ptr, const char* schema, const char* name, char* value, unsigned int value_size, long unsigned int* options) {
+  SXMPMeta* meta = static_cast<SXMPMeta*>(ptr);
+
+  std::string tmp;
+  if (meta->GetProperty(schema, name, &tmp, options)) {
+    unsigned int size_needed = tmp.length() + 1;
+    if (value && value_size >= size_needed) {
+      std::strcpy(value, tmp.c_str());
     }
-    return nullptr;
+    return size_needed;
+  }
+  return 0;
 }
 
 }

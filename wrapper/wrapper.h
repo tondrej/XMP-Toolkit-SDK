@@ -12,7 +12,8 @@ unsigned int xmp_get_global_options(void* handle);
 void xmp_set_global_options(void* handle, unsigned int options);
 typedef unsigned int (* xmp_text_output_proc) (void* client_data, const char* buffer, unsigned int buffer_size);
 unsigned int xmp_dump_namespaces(void* handle, xmp_text_output_proc out_proc, void* client_data);
-const char* xmp_get_property(void* handle, const char* schema, const char* name);
+int xmp_parse_from_buffer(void* handle, const char* buffer, unsigned int buffer_size, unsigned int options);
+unsigned int xmp_get_property(void* handle, const char* schema, const char* name, const char* value, unsigned int value_size, long unsigned int* options);
 
 #ifdef __cplusplus
 }

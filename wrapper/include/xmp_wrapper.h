@@ -58,6 +58,16 @@ unsigned int rxmp_dump_namespaces(struct rxmp_handle *handle,
                                   xmp_text_output_proc out_proc,
                                   void *client_data);
 
-char *rxmp_get_property(struct rxmp_handle *handle, const char *schema, const char *name);
+bool rxmp_parse_from_buffer(struct rxmp_handle *handle,
+                            const char *buffer,
+                            uint32_t buffer_size,
+                            uint32_t options);
+
+uint32_t rxmp_get_property(struct rxmp_handle *handle,
+                           const char *schema,
+                           const char *name,
+                           const char *value,
+                           uint32_t value_size,
+                           uint64_t *options);
 
 void rxmp_string_free(char *str);

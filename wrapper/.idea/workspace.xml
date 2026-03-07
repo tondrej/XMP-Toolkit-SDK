@@ -13,21 +13,18 @@
   <component name="ChangeListManager">
     <list default="true" id="3f46ed8c-d978-40c6-9822-8f95e7366b7f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.rs" beforeDir="false" afterPath="$PROJECT_DIR$/build.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cbindgen.toml" beforeDir="false" afterPath="$PROJECT_DIR$/cbindgen.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/dylib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/dylib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/simple.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/simple.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/xmp_wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/xmp_wrapper.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/liblibxmp.d" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/liblibxmp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/liblibxmp.rlib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/liblibxmp.rlib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.d" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll.exp" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.dll.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll.lib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.dll.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/libxmp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/liblibxmp.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/liblibxmp.rlib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/liblibxmp.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.dll.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/libxmp.pdb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/wrapper.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xmp_shim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/xmp_shim.cpp" afterDir="false" />
     </list>
@@ -61,8 +58,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Cargo.Build libxmp.executor": "Run",
-    "Cargo.Run dylib.executor": "Debug",
-    "Cargo.Run simple.executor": "Debug",
+    "Cargo.Run dylib.executor": "Run",
+    "Cargo.Run simple.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
     "Notification.DoNotAsk-WindowsDefender": "true",
@@ -72,7 +69,7 @@
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/code/ondrejkelle/XMP-Toolkit-SDK/wrapper",
+    "last_opened_file_path": "/home/tondrej/code/ondrejkelle/XMP-Toolkit-SDK/wrapper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,13 +87,13 @@
       <recent name="C:\code\ondrejkelle\XMP-Toolkit-SDK\wrapper\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run simple">
+  <component name="RunManager" selected="Cargo.Run dylib">
     <configuration name="Build libxmp" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build --package libxmp --lib" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs>
-        <env name="LIBCLANG_PATH" value="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\Llvm\x64\bin" />
+        <env name="LIBCLANG_PATH" value="/usr/lib/llvm-18/lib/" />
       </envs>
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
@@ -115,7 +112,8 @@
       <option name="command" value="run --example dylib" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs>
-        <env name="LIBCLANG_PATH" value="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\Llvm\x64\bin" />
+        <env name="LD_LIBRARY_PATH" value="../public/libraries/i80386linux_x64/release" />
+        <env name="LIBCLANG_PATH" value="/usr/lib/llvm-18/lib" />
       </envs>
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
@@ -135,7 +133,8 @@
       <option name="command" value="run --example simple" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs>
-        <env name="LIBCLANG_PATH" value="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\Llvm\x64\bin" />
+        <env name="LD_LIBRARY_PATH" value="../public/libraries/i80386linux_x64/release" />
+        <env name="LIBCLANG_PATH" value="/usr/lib/llvm-18/lib/" />
       </envs>
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
@@ -178,7 +177,7 @@
   <component name="RustProjectSettings">
     <option name="envs">
       <map>
-        <entry key="LIBCLANG_PATH" value="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\Llvm\x64\bin" />
+        <entry key="LIBCLANG_PATH" value="/usr/lib/llvm-18/lib/" />
       </map>
     </option>
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
@@ -199,10 +198,32 @@
       <workItem from="1772784365199" duration="10310000" />
       <workItem from="1772795956851" duration="7821000" />
       <workItem from="1772804961929" duration="1774000" />
+      <workItem from="1772870106416" duration="39000" />
+      <workItem from="1772870341902" duration="659000" />
+      <workItem from="1772873179182" duration="1564000" />
+      <workItem from="1772874763827" duration="139000" />
+      <workItem from="1772882003874" duration="7828000" />
+      <workItem from="1772890406470" duration="2009000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/examples/dylib.rs</url>
+          <line>44</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/examples/simple.rs</url>
+          <line>64</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

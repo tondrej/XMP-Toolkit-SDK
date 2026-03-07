@@ -144,32 +144,45 @@ pub extern "C" fn rxmp_dump_namespaces(handle: *mut rxmp_handle, out_proc: xmp_t
 }
 
 #[unsafe(no_mangle)]
+pub extern "C" fn rxmp_parse_from_buffer(handle: *mut rxmp_handle, buffer: *const c_char,
+  buffer_size: u32, options: u32) -> bool {
+    ffi_guard(|| {
+        if handle.is_null() {
+            return 0;
+        }
+        if buffer.is_null() {
+            return 0;
+        }
+        if buffer_size == 0 {
+            return 0;
+        }
+        unsafe { xmp_parse_from_buffer(handle as *mut c_void, buffer, buffer_size, options) }
+    })
+        .unwrap_or(0) != 0
+}
+
+#[unsafe(no_mangle)]
 pub extern "C" fn rxmp_get_property(
     handle: *mut rxmp_handle,
     schema: *const c_char,
     name: *const c_char,
-) -> *mut c_char {
+    value: *const c_char,
+    value_size: u32,
+    options: *mut u64
+) -> u32 {
     ffi_guard(|| {
         if handle.is_null() {
-            return std::ptr::null_mut();
+            return 0;
         }
         if schema.is_null() {
-            return std::ptr::null_mut();
+            return 0;
         }
         if name.is_null() {
-            return std::ptr::null_mut();
+            return 0;
         }
-        unsafe {
-            let result = xmp_get_property(handle as *mut c_void, schema, name);
-            if result.is_null() {
-                return std::ptr::null_mut();
-            }
-
-            let c_str = CStr::from_ptr(result);
-            return CString::new(c_str.to_bytes()).unwrap().into_raw();
-        }
+        unsafe { xmp_get_property(handle as *mut c_void, schema, name, value, value_size, options) }
     })
-    .unwrap_or(std::ptr::null_mut())
+    .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
