@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 fn main() {
     // ---- Adjust these paths ----
-    println!("cargo:rustc-link-search=native=../public/libraries/windows_x64/Release");
+    println!("cargo:rustc-link-search=native=../public/libraries/i80386linux_x64/release");
     println!("cargo:rustc-link-lib=dylib=XMPCore");
     println!("cargo:rustc-link-lib=dylib=XMPFiles");
 
